@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Centros deportivos Dolores Hidalgo</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-ckeditor-track': 'reload' %>
+    <%= csrf_meta_tags %>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body class='<%= controller.controller_name %>'>
+    <div id="banner">
+      <!--<%= form_tag store_index_path, class: 'locale' do %>
+        <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.to_s), onchange: 'this.form.submit()' %>
+        <%= submit_tag 'submit' %>
+        <%= javascript_tag "$('.locale input').hide()" %>
+      <% end %>-->
+      <!--<%= image_tag 'depositphotos_45578761-stock-illustration-logo-pc.jpg', :size => '30x85', alt: 'The Progamatic Bookshelf' %>-->
+      <span class="title">"Centros Deportivos Dolores Hidalgos"<%= @page_title %></span>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <div id="cart">
+          <% if @cart %>
+            <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+              <%= render @cart %>
+            <% end %>
+          <% end %>
+
+          <% if session[:user_id] %>
+             
+              <ul>
+                <%= button_to 'Logout', logout_path, method: :delete, class:'btn btn-danger', style:'width:100%' %><br>
+                <br>
+                
+                  <li>
+                    <a  href="<%= orders_path%>"><button type="button" class="btn btn-danger" style="width:100%">Lista de Ordenes</button></a>
+                  </li>
+                  <br>
+                   <li>
+                    <a  href="<%= products_path%>"><button type="button" class="btn btn-danger" style="width:100%">Pagos de concepto</button></a>
+                  </li>
+                   <br>
+                    <li>
+                      <a  href="<%= users_path%>"><button type="button" class="btn btn-danger" style="width:100%">Crear usuarios</button></a>
+                    </li>
+
+
+                
+              </ul>
+               <br>
+                <br>
+
+          <% end %>
+        </div>
+
+        
+         <ul>
+
+          <li>
+            <a  href="<%= admin_path%>"><button type="button" class="btn btn-danger" style="width:100%">Inicio</button></a>
+          </li>
+           <br>
+         <li>
+          <a href="<%= locations_path%>"><button type="button" class="btn btn-danger" style="width:100%">Geolocalización</button></a>
+        </li>
+ <br>
+          <li>
+            <a href="<%= acercade_acercade_path%>"><button type="button" class="btn btn-danger" style="width:100%">Acerca de</button></a>
+          </li>
+           <br>
+          <li>
+            <a href="<%= galeria_galeria_path%>"><button type="button" class="btn btn-danger" style="width:100%">Realidad Aumentada</button></a>
+          </li>
+           <br>
+         <li>
+          <a href="<%= login_path%>"><button type="button" class="btn btn-danger" style="width:100%">Login</button></a>
+        </li>
+         <br>
+   <li>
+    <a href="/store"><button type="button" class="btn btn-danger" style="width:100%">Compra</button></a>
+  </li>
+          
+        </ul>
+
+
+      </div>
+
+
+
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

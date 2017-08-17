@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Locations</h1>
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="success">Latitude</th>
+      <th class="success">Longitude</th>
+      <th class="success">Address</th>
+      <th class="success">Description</th>
+      <th class="success">Title</th>
+      <th colspan="3" class="success"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td class="danger"><%= location.latitude %></td>
+        <td class="danger"><%= location.longitude %></td>
+        <td class="danger"><%= location.address %></td>
+        <td class="danger"><%= location.description %></td>
+        <td class="danger"><%= location.title %></td>
+        <td class="danger"><%= link_to 'Show', location,class:'btn btn-info' %>
+
+        </td>
+
+       <!-- <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      --></tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Location', new_location_path,class:'btn btn-success' %>
